@@ -22,14 +22,16 @@ passport.deserializeUser((id, done) => {
 });
 
 
-// GoogleStrategy same as google arg input of
+// GoogleStrategy same as 'google' arg input of
 // function passport.authenticate
 passport.use(
   new GoogleStrategy(
     {
       clientID: keys.googleClientID,
       clientSecret: keys.googleClientSecret,
-      callbackURL: '/auth/google/callback'
+      callbackURL: '/auth/google/callback',
+      // trust heroku proxy thus relative url has https instead of http
+      proxy: true
     },
      (accessToken, refreshTocken, profile, done) => {
        User.findOne({ googleId: profile.id })
