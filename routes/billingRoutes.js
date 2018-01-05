@@ -31,7 +31,7 @@ module.exports = app => {
     // also copy of the model in our database.
     req.user.credits += 5;
 
-    // use save() to persist change
+    // use save() to persist change in the database
     // save() is asychronous request
     const user = await req.user.save();
 
