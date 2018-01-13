@@ -1,12 +1,12 @@
 import React from 'react';
 
 const Landing = () => {
+  const logo2 = require('./img/sketchin.jpg');
   return (
-      <div style={{ textAlign: 'center' }}>
-        <h1>
-          Emaily!
-        </h1>
-        Collect feedback form your users
+      <div style={{ textAlign: 'center', backgroundColor: '#000000' }}>
+        <center>
+          <img alt='logo2' src={String(logo2)} style={{ width: '100%', height: 'auto' }}/>
+        </center>
       </div>
   );
 };

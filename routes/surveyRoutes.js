@@ -20,6 +20,16 @@ module.exports = app => {
     res.send(surveys);
   });
 
+
+  // need to authanticate user via 'requireLogin'
+  // ( just to make sure a user is logged-in, since we using user.id )
+  app.get('/api/matches', requireLogin, async (req, res) => {
+    const surveys = await Survey.find({ _user: req.user.id })
+      .select({ recipients: false });
+    res.send(surveys);
+  });
+
+
   app.get('/api/surveys/:surveyId/:choice', (req, res) => {
     res.send('Thanks for voting!');
   });

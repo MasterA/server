@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const keys = require('./config/keys');
 require('./models/User');
 require('./models/Survey');
+require('./models/Skills');
 require('./services/passport');
 
 
@@ -44,6 +45,7 @@ app.use(passport.session());
 require('./routes/authRoutes')(app);
 require('./routes/billingRoutes')(app);
 require('./routes/surveyRoutes')(app);
+require('./routes/skillsRoutes')(app);
 
 // ONLY RUN IN PRODUCTION (HEROKU)
 // routing in production (Section 9, lesson 109)

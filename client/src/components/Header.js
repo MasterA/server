@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import Payments from './Payments';
+//import { Link } from 'react-router-dom';
+//import Payments from './Payments';
+import { Navbar, NavItem } from 'react-materialize';
 
 class Header extends Component {
     renderContent() {
@@ -9,33 +10,23 @@ class Header extends Component {
         case null:
           return;
         case false:
-          return <li><a href="/auth/google">Login With Google</a></li>;
+          return (<NavItem key="1" href="/auth/google">Login With Google</NavItem>);
         default:
           return [
-            <li key="1"><Payments /></li>,
-            <li key="3" style={{ margin: '0 10px'}}>
-              Credits: {this.props.auth.credits}
-            </li>,
-            <li key="2"><a href="/api/logout">Logout</a></li>
+            //<NavItem key="1"><Payments /></NavItem>,
+            <NavItem key="1" href={this.props.auth ? '/surveys' : '/'}>Dashboard</NavItem>,
+            //<NavItem key="3">Credits: {this.props.auth.credits}</NavItem>,
+            <NavItem key="3" href="/matches">Matches</NavItem>,
+            <NavItem key="2" href="/api/logout">Logout</NavItem>
           ];
       }
     }
 
     render() {
       return (
-        <nav>
-          <div className="nav-wrapper">
-            <Link
-              to={this.props.auth ? '/surveys' : '/'}
-              className="left brand-logo"
-            >
-              B&A
-            </Link>
-            <ul className="right">
-              {this.renderContent()}
-            </ul>
-          </div>
-        </nav>
+        <Navbar style={{ backgroundColor: '#292d37' }} brand='Bass & Austin' href={this.props.auth ? '/surveys' : '/'} right>
+        	{this.renderContent()}
+        </Navbar>
       );
     }
 }
