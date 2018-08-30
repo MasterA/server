@@ -8,7 +8,7 @@ const Landing = () => {
       	Hi! THERE!
       	</center>
         <center>
-          <img alt='logo2' src={String(logo2)} style={{ width: '100%', height: 'auto' }}/>
+          //<img alt='logo2' src={String(logo2)} style={{ width: '100%', height: 'auto' }}/>
         </center>
       </div>
   );
